@@ -1,19 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>GitHub Pages Test</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/marx/2.0.4/marx.css">
+  <meta charset="UTF-8">
+  <title>GitHub Pages Test</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/marx/2.0.4/marx.css">
+  <!-- manifest.jsonを呼び出しています -->
+  <link rel="manifest" href="./manifest.json">
+  <script type="text/javascript">
+    // service workerが有効なら、service-worker.js を登録します
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js').then(function() { console.log('Service Worker Registered'); });
+   }
+  </script>
 </head>
 
 <body>
-<main>
-  <h1>廣瀬が作成したサンプルです</h1>
-  <a href="http://www.tam-tam.co.jp/tipsnote/"><button>TipsNote に戻る</button></a>
-</main>
+  <main>
+    <h1>廣瀬が作成したサンプルです</h1>
+    <a href="http://www.tam-tam.co.jp/tipsnote/"><button>TipsNote に戻る</button></a>
+  </main>
 
-<script>
-console.log('GitHub Pages Samples');
-</script>
+  <script>
+    console.log('GitHub Pages Samples');
+  </script>
 </body>
 </html>
