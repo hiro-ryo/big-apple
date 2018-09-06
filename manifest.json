@@ -6,12 +6,12 @@
     {
       "src": "./img/BIG_APPLE.png",
       "sizes": "192x192",
-      "type": "image/jpg"
+      "type": "image/png"
     },
     {
       "src": "./img/BIG_APPLE_144.png",
       "sizes": "144x144",
-      "type": "image/jpg"
+      "type": "image/png"
     }
     ],
   "start_url": "/",
