@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <!-- ios用tag -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="PWA TEST">
   <link rel="apple-touch-icon" href="./img/app-icon-120x120.png" sizes="120x120">
   <link rel="apple-touch-startup-image" href="./img/zeni_splash.png" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)">
+  <link type="text/css" rel="stylesheet" href="./css/base.css">
+  
   
   <title>BIG APPLE Scheduler</title>
   <!-- manifest.jsonを呼び出しています -->
@@ -22,9 +25,13 @@
 </head>
 
 <body>
-  <h1>廣瀬が作成したサンプルです</h1>
-  <a href="http://www.tam-tam.co.jp/tipsnote/"><button>TipsNote に戻る</button></a>
-
+  <div class="wrapper">
+    <div class="page_title"><span>BIG APPLE Scheduler</span></div>
+    <div class="bg_wrapper">
+      <div class="contents_wrapper"></div>
+    </div>
+    
+  </div>
   <script>
     console.log('GitHub Pages Samples');
   </script>
