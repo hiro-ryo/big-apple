@@ -4,7 +4,7 @@
   "background_color": "#fc980c",
   "icons": [
     {
-      "src": "./wani.png",
+      "src": "./img/wani.png",
       "sizes": "192x192",
       "type": "image/png"
     }],
