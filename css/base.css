@@ -46,9 +46,8 @@ html, body {
 	width:100%;
 	min-height:90%;
 	height:90%;
-	background-image: url("../img/BIG_APPLE_bg.png");
+	background-image: url("../img/bg.png");
 	background-position: center center;
-	background-size: cover;
 	position:relative;
 }
 
