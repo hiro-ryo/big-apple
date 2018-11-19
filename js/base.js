@@ -4,7 +4,7 @@ window.onload = function(){
 	
 	// 書き換えボタンクリック時
 	document.getElementById("write_btn").onclick = function() {
-		location.href = "./next.html"
+		location.href = "./redirect.php"
 		/*
 		console.log("クリック");
 		
