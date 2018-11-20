@@ -1,100 +1,46 @@
 window.onload = function(){
-	requestFile(null, 'GET', './data/event.xml', true)
+	// firebaseコンフィグ
+	var config = {
+		apiKey: "AIzaSyBqtqrnzRPl8swfPwvlwlC7CfkAL5J6-zA",
+		authDomain: "big-apple-f214e.firebaseapp.com",
+		databaseURL: "https://big-apple-f214e.firebaseio.com",
+		projectId: "big-apple-f214e",
+		storageBucket: "big-apple-f214e.appspot.com",
+		messagingSenderId: "182384246777"
+	};
+	firebase.initializeApp(config);
+	
+	// firestoreインスタンスの生成
+	var db = firebase.firestore();
+	// タイムスタンプの設定を記述
+	var setting = { timestampsInSnapshots:true };
+	db.settings(setting);
+	
+	
+	// イベント全件取得
+	db.collection("events").get().then(function(querySnapshot) {
+		querySnapshot.forEach(function(doc) {
+			document.getElementById("canvas").innerHTML = 
+				doc.get('event_date'); + " / ";
+			document.getElementById("canvas").innerHTML +=
+				doc.get('event_name'); + " <br /> ";
+			document.getElementById("canvas").innerHTML += "<hr />";
+		});
+	});
 	
 	
 	// 書き換えボタンクリック時
 	document.getElementById("write_btn").onclick = function() {
-		location.href = "./redirect.php"
-		/*
-		console.log("クリック");
-		
-		var element = document.createElement("xml");
-		element.innerHTML = 
-			'<container>\n' +
-			'	<element0 attribute="value0">テキストＡ</element0>\n' +
-			'	<element1 attribute="value1">テキストＢ</element1>\n' +
-			'</container>';
-
-		// ------------------------------------------------------------
-		// XMLSerializer オブジェクトを作成する
-		// ------------------------------------------------------------
-		var xml_serializer = new XMLSerializer();
-
-		// ------------------------------------------------------------
-		//「DOM ノード」から「XML 文字列」を生成する
-		// ------------------------------------------------------------
-		var text_xml = xml_serializer.serializeToString(element);
-		
-		// 出力テスト
-		console.log(text_xml);
-		
-		writeTextFile("./data/event.xml",text_xml)
-		*/
+		addEvent("events", "忘年会", "2018/12/3", "2018/11/20");
 	};
 
 };
 
-function writeTextFile(afilename, output){
-	var source = [ output ];
 
-	// ------------------------------------------------------------
-	// FilePropertyBag オブジェクトを用意
-	// ------------------------------------------------------------
-	var file_property_bag = {
-	
-		// コンテンツタイプを設定
-		type: "text/xml",
-
-		// 最終更新日時を設定（単位：ミリ秒）
-		lastModified: 0
-	};
-
-	var txtFile =new File(source, "./data/event.xml", file_property_bag);
+function addEvent(doc,name,date,now){
+	db.collection(doc).add({
+		event_name: name,
+		event_date: date,
+		update_date: now,
+	});
 }
-
-
-function creHR() {
-	return new window.XMLHttpRequest();
-}
-
-function requestFile(data, method, fname, async) {
-	//XMLHttpRequestオブジェクトを生成
-	var HttpObject = creHR();
-	//openメソッドでXMLファイルを開く
-	HttpObject.open(method, fname, async);
-	
-	//無名functionによるイベント処理
-	HttpObject.onreadystatechange = function() {
-		if (HttpObject.readyState == 4) {
-			//コールバック
-			CB(HttpObject);
-		}
-	}
-	
-	//データの送信
-	HttpObject.send(data);
-}
-
-	
-//コールバック
-function CB(HttpObj) {
-	var resHTTP = HttpObj.responseXML.documentElement;
-	eventList = resHTTP.getElementsByTagName('event');
-	
-	eventDate = resHTTP.getElementsByTagName('event_date');
-	eventName = resHTTP.getElementsByTagName('event_name');
-	
-	document.getElementById("canvas").innerHTML = 
-		eventList.length + "個のデータがあります<br /><br />";
-	
-	//ノードの数だけループ
-	for(i = 0; i < eventList.length; i++) {
-		document.getElementById("canvas").innerHTML +=
-			eventDate[i].childNodes[0].nodeValue + " / ";
-		document.getElementById("canvas").innerHTML +=
-			eventName[i].childNodes[0].nodeValue + "<br /> ";
-		document.getElementById("canvas").innerHTML += "<hr />";
-	}
-	
-}
-
