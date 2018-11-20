@@ -8,26 +8,30 @@ window.onload = function(){
 		storageBucket: "big-apple-f214e.appspot.com",
 		messagingSenderId: "182384246777"
 	};
-	firebase.initializeApp(config);
-	
-	// firestoreインスタンスの生成
-	var db = firebase.firestore();
-	// タイムスタンプの設定を記述
-	var setting = { timestampsInSnapshots:true };
-	db.settings(setting);
 	
 	
-	// イベント全件取得
-	db.collection("events").get().then(function(querySnapshot) {
-		querySnapshot.forEach(function(doc) {
-			document.getElementById("canvas").innerHTML = 
-				doc.get('event_date'); + " / ";
-			document.getElementById("canvas").innerHTML +=
-				doc.get('event_name'); + " <br /> ";
-			document.getElementById("canvas").innerHTML += "<hr />";
+	document.getElementById("get_btn").onclick = function() {
+		firebase.initializeApp(config);
+		
+		// firestoreインスタンスの生成
+		var db = firebase.firestore();
+		
+		
+		// タイムスタンプの設定を記述
+		var setting = { timestampsInSnapshots:true };
+		db.settings(setting);
+		
+		// イベント全件取得
+		db.collection("events").get().then(function(querySnapshot) {
+			querySnapshot.forEach(function(doc) {
+				document.getElementById("canvas").innerHTML = 
+					doc.get('event_date'); + " / ";
+				document.getElementById("canvas").innerHTML +=
+					doc.get('event_name'); + " <br /> ";
+				document.getElementById("canvas").innerHTML += "<hr />";
+			});
 		});
-	});
-	
+	};
 	
 	// 書き換えボタンクリック時
 	document.getElementById("write_btn").onclick = function() {
