@@ -30,13 +30,21 @@
     <div class="bg_wrapper">
       <div class="contents_wrapper">
         <div id="canvas"></div>
-        <div>
-          <button id="get_btn">取得</button>
-          <button id="write_btn">書き換え</button>
+        <div class="form_area">
+          <div>
+            <label for="event_title">イベント名：</label><input type="text" id="event_title">
+          </div>
+          <div>
+            <label for="event_date">イベント日：</label><input type="date" id="event_date">
+          </div>
+        </div>
+        <div class="btn_area">
+          <button id="get_btn">イベント取得</button>
+          <button id="write_btn">イベント追加</button>
         </div>
       </div>
     </div>
-    <div class="fotter">フッターのテストです</div>
+    <div class="fotter">Copycenter 2018 Hirose Limited.</div>
   </div>
   
   <script type="text/javascript" src="./js/firebase.js"></script>
