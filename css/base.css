@@ -51,12 +51,6 @@ html, body {
 .page_title p {
 	margin:auto;
 	width:50%;
-	height:50%;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	position: absolute;
 }
 
 .page_title p span {
@@ -99,4 +93,8 @@ html, body {
 	height:10%;
 	background-color:#222222;
 	color:white;
+}
+
+.form_area {
+	margin-bottom:20px;
 }
